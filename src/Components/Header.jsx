@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import {ReactComponent as Logo} from '../assets/crown.svg'
 import { Link } from "react-router-dom";
-const Header = () => {
+import { auth } from "../Firebase/Firebase.config";
+
+
+const Header = ({currentUser}) => {
   return (
       <Container>
           <Wrapper>
@@ -9,8 +12,14 @@ const Header = () => {
                     <Logo/>
               </LogoContainer>
               <OptionsContainer>
-                <OptionsLink to='/shop'> Shop</OptionsLink>
-                {/* <OptionsLink  to='/'> </OptionsLink>                  <OptionsLink> </OptionsLink> */}
+                <OptionsLink to='/shop'> SHOP</OptionsLink>
+                {currentUser ? (
+                    <OptionsLink as='div' onClick={() => auth.signOut()}>
+                    SIGN OUT
+                    </OptionsLink>
+                ) : (
+                    <OptionsLink to='/signin'>SIGN IN</OptionsLink>
+                )}            
               </OptionsContainer>
           </Wrapper>
       </Container>
@@ -24,7 +33,6 @@ const Container = styled.div`
     min-width: 100%;
     width: 100%;
 
-    background-color: aqua;
 `;
 
 const Wrapper = styled.div`
@@ -32,10 +40,9 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     
-    background: beige;
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled(Link)`
     flex: 1;
 `
 

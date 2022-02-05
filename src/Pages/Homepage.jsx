@@ -14,8 +14,9 @@ export default Homepage;
 
 
 const Container= styled.div`
-     display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:10px 70px;
 
 `

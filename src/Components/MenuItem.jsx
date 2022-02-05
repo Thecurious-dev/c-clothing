@@ -24,12 +24,12 @@ margin: 0 7.5px 15px;
             opacity: 0.9;
         }
     }
-    // &:first-child {
-    // margin-right: 7.5px;
-    // }
-    // &:last-child {
-    // margin-left: 7.5px;
-    // }
+     &:first-child {
+     margin-right: 7.5px;
+     }
+     &:last-child {
+     margin-left: 7.5px;
+     }
 
 `;
 
