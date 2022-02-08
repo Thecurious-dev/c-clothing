@@ -23,13 +23,67 @@ import {signInWithGoogle} from '../Firebase/Firebase.config'
 
 
 
+
+// const SignIn = () => {
+//   // const [email, setEmail] = useState("");
+//   // const [password, setPassword] = useState("");
+
+//   const [values, setValues] = useState({
+//     email: '',
+//     password: '',
+    
+//   });
+
+  
+  
+//   const handleChange = event => {
+//     const { value, name } = event.target;
+
+//     setValues({ [name]: value });
+//   }
+
+//   return (
+//     <SignInContainer>
+//     <SignInTitle>I already have an account</SignInTitle>
+//     <span>Sign in with your email and password</span>
+
+//     <form >
+//       <FormInput
+//         name='email'
+//         type='email'
+//         onChange={handleChange}
+//         value={values.email}
+//         label='email'
+//         required
+//       />
+//       <FormInput
+//         name='password'
+//         type='password'
+//         values={values.password}
+//         onChange={handleChange}
+//         label='password'
+//         required
+//       />
+//       <ButtonsBarContainer>
+//         <CustomButton type='submit'> Sign in </CustomButton>
+//         <CustomButton onClick={signInWithGoogle} isGoogleSignIn >
+//           Sign in with Google
+//         </CustomButton>
+//       </ButtonsBarContainer>
+//     </form>
+//   </SignInContainer>
+//   );
+// };
+
+// export default SignIn;
+
+
 class SignIn extends React.Component {
   
-
-    state = {
-      email: '',
-      password: ''
-    };
+  state = {
+    email: '',
+    password: ''
+  };
   
 
   handleSubmit = async event => {

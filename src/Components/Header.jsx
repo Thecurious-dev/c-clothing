@@ -19,7 +19,8 @@ const Header = ({currentUser}) => {
                     </OptionsLink>
                 ) : (
                     <OptionsLink to='/signin'>SIGN IN</OptionsLink>
-                )}            
+                )}   
+                         
               </OptionsContainer>
           </Wrapper>
       </Container>
@@ -49,10 +50,16 @@ const LogoContainer = styled(Link)`
 const OptionsLink = styled(Link)`
     padding: 10px 15px;
     cursor: pointer;
+
+    & + & {
+        background-color: aqua;
+    }
 `
 
 const OptionsContainer = styled.div`
     flex: 1;
+    display: flex;
+    align-items: centers;
 
 `
 
