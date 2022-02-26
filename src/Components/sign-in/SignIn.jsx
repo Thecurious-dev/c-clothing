@@ -1,25 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-import FormInput from './FormInput';
-import CustomButton from './CustomButton';
-import {signInWithGoogle} from '../Firebase/Firebase.config'
+import FormInput from '../form-input/FormInput';
+import CustomButton from '../custom-button/CustomButton';
+import {signInWithGoogle} from '../../Firebase/Firebase.config'
+import { auth } from '../../Firebase/Firebase.config';
+import { ButtonsBarContainer, SignInContainer, SignInTitle } from './sign-in.styles';
 
-
- const SignInContainer = styled.div`
-  width: 380px;
-  display: flex;
-  flex-direction: column;
-  
-`;
-
- const SignInTitle = styled.h2`
-  margin: 10px 0;
-`;
-
- const ButtonsBarContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
 
 
 
@@ -89,10 +74,16 @@ class SignIn extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    // const { email, password } = this.state;
+    const { email, password } = this.state;
 
-    
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: '', password: '' });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
 
   handleChange = event => {
     const { value, name } = event.target;
@@ -102,7 +93,8 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <SignInContainer>
+      <SignInContainer
+      >
         <SignInTitle>I already have an account</SignInTitle>
         <span>Sign in with your email and password</span>
 

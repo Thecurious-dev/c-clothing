@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import MenuItem from './MenuItem';
+import { Container } from './directory.styles';
+import MenuItem from '../menu-item/MenuItem';
 
 class Directory extends Component {
     state = {  
@@ -55,10 +55,3 @@ class Directory extends Component {
 export default Directory;
 
 
-const Container = styled.div`
-   width: 100%;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-
-`

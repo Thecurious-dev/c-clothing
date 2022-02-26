@@ -55,9 +55,3 @@ export const CustomButtonContainer = styled.button`
   justify-content: center;
   ${getButtonStyles}
 `;
-
-const CustomButton = ({ children, ...props }) => (
-    <CustomButtonContainer {...props}>{children}</CustomButtonContainer>
-  );
-  
-  export default CustomButton;

@@ -1,8 +1,8 @@
 import React from 'react';
-import FormInput from './FormInput';
-import CustomButton from './CustomButton';
-import styled from 'styled-components';
-import { auth, createUserProfileDocument } from '../Firebase/Firebase.config';
+import FormInput from '../form-input/FormInput';
+import CustomButton from '../custom-button/CustomButton';
+import { auth, createUserProfileDocument } from '../../Firebase/Firebase.config';
+import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 
 
 
@@ -101,12 +101,3 @@ class SignUp extends React.Component {
 
 export default SignUp;
 
- const SignUpContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 380px;
-`;
-
- const SignUpTitle = styled.h2`
-  margin: 10px 0;
-`;
