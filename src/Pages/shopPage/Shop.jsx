@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import CollectionPreview from '../../Components/collection-preview/CollectionPreview';
+import { Container } from './shop-page.style';
 
 
 const Shop = () => {
@@ -274,7 +274,3 @@ const Shop = () => {
 export default Shop;
 
 
-const Container = styled.div`
-    padding: 10px 80px;
-
-`

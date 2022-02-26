@@ -8,7 +8,9 @@ import Shop from './Pages/shopPage/Shop';
 import SignInAndSignUp from "./Pages/signInAndSignUpPage/SignInAndSignUp";
 import { auth ,createUserProfileDocument} from './Firebase/Firebase.config';
 import { setCurrentUser } from './Redux/user/user.action';
-
+import CheckOut from './Pages/checkOutPage/CheckOut';
+import { selectCurrentUser } from './Redux/user/user-selectors';
+import { createStructuredSelector } from 'reselect';
 
 
 
@@ -137,9 +139,9 @@ class App extends Component {
           <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/shop" element={<Shop />} />
-          
           <Route path="/signin" element={currentUser ? <Navigate to="/"/> : <SignInAndSignUp />} />
-    
+          <Route path="/checkout" element={<CheckOut />} />
+
     
           </Routes>
         </div>
@@ -149,9 +151,9 @@ class App extends Component {
   
 
 }
-const mapStateToProps = ({user}) =>({
+const mapStateToProps = createStructuredSelector({
   // we destructed user from state
-  currentUser: user.currentUser
+  currentUser: selectCurrentUser
   
 })
 
