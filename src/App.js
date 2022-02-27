@@ -1,16 +1,16 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from "./Components/header/Header";
 import { GlobalStyles } from "./GlobalStyles";
-import { Routes,Route, Navigate } from "react-router-dom";
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Homepage from './Pages/homepage/Homepage';
 import Shop from './Pages/shopPage/Shop';
 import SignInAndSignUp from "./Pages/signInAndSignUpPage/SignInAndSignUp";
 import { auth ,createUserProfileDocument} from './Firebase/Firebase.config';
 import { setCurrentUser } from './Redux/user/user.action';
-import CheckOut from './Pages/checkOutPage/CheckOut';
 import { selectCurrentUser } from './Redux/user/user-selectors';
 import { createStructuredSelector } from 'reselect';
+import CheckoutPage from './Pages/checkOutPage/CheckoutPage';
 
 
 
@@ -131,19 +131,26 @@ class App extends Component {
 
   render(){
 
-    const {currentUser} = this.props
       return (
         <div >
           <GlobalStyles/>
           <Header />
-          <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/signin" element={currentUser ? <Navigate to="/"/> : <SignInAndSignUp />} />
-          <Route path="/checkout" element={<CheckOut />} />
-
-    
-          </Routes>
+          <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route path='/shop' component={Shop} />
+          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInAndSignUp />
+              )
+            }
+          />
+        </Switch>
         </div>
       );
   }

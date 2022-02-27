@@ -6,6 +6,7 @@ import CollectionItem from "../collection-item/CollectionItem";
 const CollectionPreview = ({title,items}) => {
   return (
       <Container>
+        jjjjjj
           <Title>{title.toUpperCase()}</Title>
           <Preview>
             {items.filter((item, idx) => idx < 4)
