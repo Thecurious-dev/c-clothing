@@ -1,6 +1,6 @@
 
-const INITIAL_STATE ={
-    sections:  [
+const INITIAL_STATE = {
+    sections: [
       {
         title: 'hats',
         imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -24,8 +24,7 @@ const INITIAL_STATE ={
         imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
         size: 'large',
         id: 4,
-        linkUrl: 'shop/womens',
-        
+        linkUrl: 'shop/womens'
       },
       {
         title: 'mens',
@@ -34,12 +33,8 @@ const INITIAL_STATE ={
         id: 5,
         linkUrl: 'shop/mens'
       }
-        
-      ]
-    
-    
-    
-};
+    ]
+  };
 
 
 const directoryReducer = (state= INITIAL_STATE, action) =>{
