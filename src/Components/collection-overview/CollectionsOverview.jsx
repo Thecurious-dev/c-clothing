@@ -11,7 +11,7 @@ import { CollectionsOverviewContainer } from './collection-overview.style';
 
 const CollectionsOverview = ({ collections }) => (
   <CollectionsOverviewContainer>
-  hhhh
+  
     {collections.map(({ id, ...otherCollectionProps }) => (
       <CollectionPreview key={id} {...otherCollectionProps} />
     ))}

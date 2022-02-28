@@ -8,7 +8,12 @@ import rootReducer from "./root-reducer";
 import {persistStore} from "redux-persist";
 
 //cast logger into middleware
-const middlewares = [logger];
+const middlewares = [];
+
+if(process.env.NODE_ENV === "development"){
+    middlewares.push(logger);
+}
+
 //create store and pass in rootreducer,applymiddleware
 const store = createStore(rootReducer,applyMiddleware(...middlewares));
 
