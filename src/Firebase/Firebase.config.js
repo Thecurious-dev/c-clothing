@@ -51,6 +51,47 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+
+//uploading our data to firebase
+export const addCollectionAndDocuments = async (collectionkey, ObjectToAdd) =>{
+  // creating a collection with the collection key
+
+  const collectionRef = firestore.collection(collectionkey);
+    console.log(collectionRef);
+
+    
+// batching will help us upload all collections at a go
+    const batch = firestore.batch();
+    ObjectToAdd.forEach (obj => {
+      const newDocRef = collectionRef.doc();
+      batch.set (newDocRef,obj);
+    })
+    return await batch.commit();
+};
+
+
+// adding additional properties to our collections
+export const convertCollectionsSnapshotTomap = (collections)=>{
+  const transformedCollection = collections.docs.map(doc =>{
+    const {title,items} = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id:doc.id,
+      title,
+      items
+    };
+    
+  })
+// since we got back an array from transformedcollection, we need to convert it to an object which will be needed in out shop selector
+  return transformedCollection.reduce ((accumulator,collection)=>{
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator
+  }, {})
+}
+
+
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

@@ -15,68 +15,6 @@ import CheckoutPage from './Pages/checkOutPage/CheckoutPage';
 
 
 
-// const App = () => {
-  
-//   useEffect(() => {
-//       // const {setCurrentUser} = this.props
-//       const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-     
-//         if (userAuth) {
-//            // if userAuth exist then we store the newly created user object in userRef to check the location of the newly created user. 
-//            //and to know
-//         // if our database has updated and we waited for the createUserProfileDocument that we created in firebase.utils
-//           const userRef = await createUserProfileDocument(userAuth);
-//             // now we check the snapshot object representing the data stored in our database
-//           userRef.onSnapshot(snapShot => {
-//             // then on the snapshot that we got back which contains data of the newly created user or existing user
-//             // we setState
-//             setCurrentUser({
-//                 // created an id for the snapshot 
-//                 id: snapShot.id,
-//                 // and got back the data
-//                 ...snapShot.data()
-              
-//             });
-            
-//           });
-//           // console.log(userAuth);
-//         }
-  
-//         setCurrentUser(userAuth);
-//       });
-    
-//       return () => {
-//         unsubscribeFromAuth()
-//       };
-//     }, []);
-    
-
-
-//   return (
-//     <div >
-//     <GlobalStyles/>
-//     <Header />
-//     <Routes>
-//     <Route path="/" element={<Homepage />} />
-//     <Route path="/shop" element={<Shop />} />
-    
-//     <Route path="/signin" element={<SignInAndSignUp />} />
-
-
-//     </Routes>
-//   </div>
-//   );
-// };
-
-// const mapDispatchToProps = dispatch =>({
-//     setCurrentUser: user => dispatch(setCurrentUser(user))
-//     // the user is the bracket is the payload
-//   })
-  
-
-// export default connect(null,mapDispatchToProps) (App);;
-
-
 class App extends Component {
   
 
@@ -86,7 +24,7 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const {setCurrentUser} = this.props
+    const {setCurrentUser} = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
      
@@ -130,7 +68,7 @@ class App extends Component {
 
 
   render(){
-
+      const {currentUser}= this.props
       return (
         <div >
           <GlobalStyles/>
@@ -143,7 +81,7 @@ class App extends Component {
             exact
             path='/signin'
             render={() =>
-              this.props.currentUser ? (
+              currentUser ? (
                 <Redirect to='/' />
               ) : (
                 <SignInAndSignUp />
@@ -161,7 +99,6 @@ class App extends Component {
 const mapStateToProps = createStructuredSelector({
   // we destructed user from state
   currentUser: selectCurrentUser
-  
 })
 
 // mapDispatchToProps is a function that gets dispatch and return an object where the prop name

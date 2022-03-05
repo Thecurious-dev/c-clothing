@@ -7,6 +7,9 @@ import { selectCollection } from '../../Redux/shop/shop.selectors';
 
 import {CollectionPageContainer,CollectionTitle,CollectionItemsContainer} from './collection-page.style';
 
+
+// this page displays one of the collection item(menu item) when the item is clicked
+
 const CollectionPage = ({ collection }) => {
   console.log(collection);
   const { title, items } = collection;

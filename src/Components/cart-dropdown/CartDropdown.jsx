@@ -13,7 +13,7 @@ import {
   EmptyMessageContainer,
   CartItemsContainer
 } from './CartDropdown.styles';
-import { useNavigate, withRouter } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 import { selectCartItems } from '../../Redux/cart/cart-selectors';
 import { createStructuredSelector } from 'reselect';
 
@@ -30,7 +30,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
     </CartItemsContainer>
     <CartDropdownButton
       onClick={() => {
-        history.push('/checkout');
+        history.push("/checkout");
         dispatch(toggleCartHidden());
       }}
     >
